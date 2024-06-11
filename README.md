@@ -4,7 +4,9 @@ This is a collection of data structures and algorithms implemented in the Zig pr
 
 ## Data Structures
 - [x] Hash Map
-- [ ] Linked List
+- [ ] Dynamic Array
+- [ ] Singly Linked List
+- [ ] Doubly Linked List
 - [ ] Stack
 - [ ] Queue
 - [ ] Heap
@@ -15,10 +17,10 @@ This is a collection of data structures and algorithms implemented in the Zig pr
 - [ ] Deque
 - [ ] AVL Tree (?)
 - [ ] Red-Black Tree (?)
-- [ ] Disjoint Set
-- [ ] Bloom Filter
-- [ ] LRU Cache
-- [ ] LFU Cache
+- [ ] Disjoint Set (?)
+- [ ] Bloom Filter (?)
+- [ ] LRU Cache (?)
+- [ ] LFU Cache (?)
 
 ## Algorithms
 - [ ] Sorting
