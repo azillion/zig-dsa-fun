@@ -10,10 +10,10 @@ This is a collection of data structures and algorithms implemented in the Zig pr
 - [ ] Stack
 - [ ] Queue
 - [ ] Heap
+- [ ] Priority Queue
 - [ ] Graph
 - [ ] Trie
 - [ ] Binary Search Tree
-- [ ] Priority Queue
 - [ ] Deque
 - [ ] AVL Tree (?)
 - [ ] Red-Black Tree (?)
