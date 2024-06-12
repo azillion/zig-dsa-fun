@@ -10,11 +10,16 @@ pub fn DynamicArray(comptime T: type) type {
         items: []T = undefined,
         allocator: *Allocator = undefined,
 
-        pub fn init(self: *Self, allocator: *Allocator, capacity: u32) void {
+        pub fn init(self: *Self, allocator: *Allocator, capacity: u32) !void {
             assert(capacity > 0);
             self.length = 0;
             self.capacity = capacity;
             self.allocator = allocator;
+            self.items = try allocator.alloc(T, self.capacity);
+        }
+
+        pub fn deinit(self: *Self) void {
+            self.allocator.free(self.items);
         }
     };
 }
@@ -24,6 +29,7 @@ test "expect a dynamic array to be created" {
     const U32Array = DynamicArray(u32);
     var list: U32Array = undefined;
     list.init(&allocator, 10);
+    defer list.deinit();
 
     try expect(list.length == 0);
     try expect(list.capacity == 10);
