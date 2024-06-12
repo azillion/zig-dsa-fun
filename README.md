@@ -4,10 +4,10 @@ This is a collection of data structures and algorithms implemented in the Zig pr
 
 ## Data Structures
 - [x] Hash Map
-- [ ] Dynamic Array
+- [x] Dynamic Array
 - [ ] Singly Linked List
 - [ ] Doubly Linked List
-- [ ] Stack
+- [x] Stack
 - [ ] Queue
 - [ ] Heap
 - [ ] Priority Queue

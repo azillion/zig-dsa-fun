@@ -3,8 +3,9 @@ const expect = @import("std").testing.expect;
 const expectError = @import("std").testing.expectError;
 const assert = @import("std").debug.assert;
 
-const DynamicArrayError = error{
+pub const DynamicArrayError = error{
     OutOfBounds,
+    Empty,
 };
 
 pub fn DynamicArray(comptime T: type) type {
@@ -51,7 +52,7 @@ pub fn DynamicArray(comptime T: type) type {
 
         pub fn pop(self: *Self) DynamicArrayError!T {
             if (self.length == 0) {
-                return DynamicArrayError.OutOfBounds;
+                return DynamicArrayError.Empty;
             }
             self.length -= 1;
             return self.items[self.length];
@@ -104,7 +105,7 @@ test "expect push and pop operations to work correctly" {
     try expect(list.length == 0);
 
     const pop_error = list.pop();
-    try expect(pop_error == DynamicArrayError.OutOfBounds);
+    try expect(pop_error == DynamicArrayError.Empty);
 }
 
 test "expect dynamic array to resize correctly" {
