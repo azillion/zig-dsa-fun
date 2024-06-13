@@ -6,7 +6,7 @@ This is a collection of data structures and algorithms implemented in the Zig pr
 - [x] Hash Map
 - [x] Dynamic Array
 - [x] Singly Linked List
-- [ ] Doubly Linked List
+- [x] Doubly Linked List
 - [x] Stack
 - [ ] Queue
 - [ ] Heap
