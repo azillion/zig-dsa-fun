@@ -15,8 +15,8 @@ pub fn LinkedList(comptime T: type) type {
             next: ?*Node,
         };
 
-        head: ?*Node = undefined,
-        tail: ?*Node = undefined,
+        head: ?*Node = null,
+        tail: ?*Node = null,
         allocator: *Allocator = undefined,
 
         pub fn init(self: *Self, allocator: *Allocator) void {
@@ -79,16 +79,21 @@ pub fn LinkedList(comptime T: type) type {
             }
         }
 
-        pub fn remove(self: *Self, index: u32) LinkedListError!void {
+        pub fn remove(self: *Self, index: u32) LinkedListError!?T {
+            var result: ?T = null;
             if (self.head == null) {
                 return LinkedListError.NodeNotFound;
             }
             if (index == 0) {
                 if (self.head) |head| {
                     self.head = head.next;
+                    result = head.value;
                     self.allocator.destroy(head);
+                    if (self.head == null) {
+                        self.tail = null;
+                    }
                 }
-                return;
+                return result;
             }
             var node = self.head;
             var i: u32 = 0;
@@ -104,8 +109,9 @@ pub fn LinkedList(comptime T: type) type {
             if (node) |n| {
                 if (n.next) |next| {
                     n.next = next.next;
+                    result = next.value;
                     self.allocator.destroy(next);
-                    return;
+                    return result;
                 }
             }
             return LinkedListError.NodeNotFound;
@@ -202,7 +208,8 @@ test "expect LinkedList to remove values" {
     const value3: u32 = 3;
     try list.insert_tail(value3);
 
-    try list.remove(1);
+    const val = try list.remove(1);
+    try expect(val == value2);
 
     try expect(try list.get(0) == value1);
     try expect(try list.get(1) == value3);
