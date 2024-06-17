@@ -9,7 +9,7 @@ This is a collection of data structures and algorithms implemented in the Zig pr
 - [x] Doubly Linked List
 - [x] Stack
 - [x] Queue
-- [i] Heap
+- [ ] Heap
 - [ ] Priority Queue
 - [ ] Graph
 - [ ] Trie
